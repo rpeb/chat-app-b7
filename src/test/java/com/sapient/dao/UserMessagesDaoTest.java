@@ -27,11 +27,11 @@ public class UserMessagesDaoTest {
 		expected.add(message);
 		message = new MessagePod4(11,"U2","U1",0,"2021-05-08T21:16:38","I am fine user one!",0,0,1);
 		expected.add(message);
-		System.out.println(expected);
+//		System.out.println(expected);
 		
 		// then
 		List<MessagePod4> actual = userMessages.getMessages(senderId, receiverId);
-		System.out.println(actual);
+//		System.out.println(actual);
 		assertEquals(actual.toString(), expected.toString());
 	}
 	
