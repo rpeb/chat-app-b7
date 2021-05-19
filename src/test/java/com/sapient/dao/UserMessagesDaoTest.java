@@ -3,7 +3,9 @@ package com.sapient.dao;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.*;
-import org.junit.jupiter.api.Test;
+
+import org.junit.jupiter.api.*;
+
 import com.sapient.entity.MessagePod4;
 
 public class UserMessagesDaoTest {
@@ -12,6 +14,7 @@ public class UserMessagesDaoTest {
 	GroupMessagesDao groupMessage = new GroupMessagesDao();
 	
 	// TODO : Write display names on tests
+	@Disabled
 	@Test
 	public void should_ReturnListOfMessages_With_SenderId_ReceiverId() {
 		// given
@@ -32,6 +35,7 @@ public class UserMessagesDaoTest {
 		assertEquals(actual.toString(), expected.toString());
 	}
 	
+	@Disabled
 	@Test
 	public void should_ReturnTrue_When_UserMessage_Inserted() {
 		// given
@@ -42,6 +46,7 @@ public class UserMessagesDaoTest {
 		assertTrue(userMessages.saveNewMessage(message));
 	}
 	
+	@Disabled
 	@Test
 	public void should_DeleteAMessage_OnDeleteSender() {
 		// given
