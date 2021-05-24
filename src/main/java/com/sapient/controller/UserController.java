@@ -48,7 +48,7 @@ public class UserController {
 	}
 	@CrossOrigin(origins = "*")
 	@PostMapping("/register")
-	public boolean register(@RequestBody User user) {
+	public boolean register(@RequestBody User user ) {
 		return dao.registerUser(user); 
 	}
 	
@@ -57,6 +57,8 @@ public class UserController {
 	public boolean deleteUser(@RequestBody  DeleteUserParams params) {
 		return dao.deleteUser(params); 
 	}
+	
+	
 	
 }
 
