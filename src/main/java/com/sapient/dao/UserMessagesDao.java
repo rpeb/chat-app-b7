@@ -3,7 +3,7 @@ package com.sapient.dao;
 import java.sql.*;
 import java.util.*;
 
-import com.sapient.entity.MessagePod4;
+import com.sapient.entity.*;
 import com.sapient.interfaces.IUserMessageDao;
 import com.sapient.utils.GetConnection;
 
@@ -63,6 +63,49 @@ public class UserMessagesDao implements IUserMessageDao {
 		return null;
 	}
 	
+	@Override
+	public List<MessagePod4> getMessagesForASender(String userId) {
+		String sql = "select time_of_messaging, sender_id, user_receiver_id, group_receiver_id from messages m join users u on m.sender_id=u.user_id or m.user_receiver_id=u.user_id where u.user_id=?";
+		try {
+			PreparedStatement ps = GetConnection.getPreparedStatement(sql);
+			ps.setString(1, userId);
+			ResultSet result = ps.executeQuery();
+			List<MessagePod4> list = new ArrayList<MessagePod4>();
+			while(result.next()) {
+				MessagePod4 message = new MessagePod4();
+				String sender = result.getString("sender_id");
+				if (sender.equals(userId)) {
+					String receiver = result.getString("user_receiver_id");
+					if (receiver==null) {
+						Group g = new Group();
+						GroupDAO groupdao = new GroupDAO();
+						g = groupdao.getGroup(result.getInt("group_receiver_id"));
+						message.setNameOfUser(g.getGroupName());
+						message.setGroupReceiverId(g.getGroupId());
+					} else {
+						UserProfile user = new UserProfile();
+						UserDAO userdao = new UserDAO();
+						user = userdao.getUser(receiver);
+						message.setNameOfUser(user.getName());
+						message.setUserReceiverId(user.getUserId());
+					}
+				} else {
+					UserProfile user = new UserProfile();
+					UserDAO userdao = new UserDAO();
+					user = userdao.getUser(sender);
+					message.setNameOfUser(user.getName());
+					message.setUserReceiverId(user.getUserId());
+				}
+				list.add(message);
+			}
+			return list;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	@Override
 	public MessagePod4 getMessageById(int messageId) {
 		String sql = "SELECT * from messages WHERE message_id=?";

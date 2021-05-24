@@ -1,10 +1,6 @@
 package com.sapient.controller;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.sapient.dao.UpdateProfileDAO;
 import com.sapient.entity.User;
@@ -19,7 +15,7 @@ import com.sapient.interfaces.IUpdateProfileDAO;
 public class UpdateProfileController {
 
 	private IUpdateProfileDAO dao = new UpdateProfileDAO();
-
+	@CrossOrigin(origins = "*")
 	@PutMapping("/user/{userId}/email")
 	public User changeEmail(@PathVariable String userId, @RequestBody User updateProfile) {
 		try {
@@ -30,7 +26,7 @@ public class UpdateProfileController {
 		}
 		return dao.getUser(userId);
 	}
-
+	@CrossOrigin(origins = "*")
 	@PutMapping("/user/{userId}/name")
 	public User changeName(@PathVariable String userId, @RequestBody User updateProfile) {
 		try {
@@ -42,7 +38,7 @@ public class UpdateProfileController {
 		}
 		return dao.getUser(userId);
 	}
-
+	@CrossOrigin(origins = "*")
 	@PutMapping("/user/{userId}/password")
 	public User changePassword(@PathVariable String userId, @RequestBody User updateProfile) {
 		try {
@@ -53,7 +49,7 @@ public class UpdateProfileController {
 		}
 		return dao.getUser(userId);
 	}
-
+	@CrossOrigin(origins = "*")
 	@PutMapping("/user/{userId}/dob")
 	public User changeDOB(@PathVariable String userId, @RequestBody User updateProfile) {
 		try {

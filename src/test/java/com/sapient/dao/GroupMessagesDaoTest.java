@@ -21,9 +21,9 @@ class GroupMessagesDaoTest {
 		
 		// when
 		List<MessagePod4> expected = new ArrayList<MessagePod4>();
-		messagePod4 = new MessagePod4(2,"U5",null,2,"2021-05-08T21:16:26","Hi, I am user five!",0,0,0);
+		messagePod4 = new MessagePod4(2,"U5",null,2,"2021-05-08T21:16:26","Hi, I am user five!",0,0,0, "U1");
 		expected.add(messagePod4);
-		messagePod4 = new MessagePod4(6,"U5",null,2,"2021-05-08T21:16:32","Hi group two, user five here!",0,0,0);
+		messagePod4 = new MessagePod4(6,"U5",null,2,"2021-05-08T21:16:32","Hi group two, user five here!",0,0,0, "U1");
 		expected.add(messagePod4);
 //		System.out.println("expected = "+ expected);
 		

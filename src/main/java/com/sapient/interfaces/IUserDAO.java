@@ -19,5 +19,6 @@ public interface IUserDAO {
 	
 	public List<UserProfile> getAllUsers();
 	
-
+	public List<UserProfile> getActiveUsers();
+	
 }

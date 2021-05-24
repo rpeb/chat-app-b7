@@ -84,6 +84,26 @@ public class UserDAO implements IUserDAO {
 	
 	public List<UserProfile> getAllUsers() {
 		// TODO Auto-generated method stub
+		String sql = "SELECT * FROM USERS";
+		List<UserProfile> list = null;
+		try {
+			PreparedStatement ps = GetConnection.getMySQLConn().prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			list = new ArrayList<UserProfile>();
+			while (rs.next()) {
+				UserProfile userProfile = new UserProfile(rs.getString(1),rs.getString(2),rs.getString(4),rs.getString(5));
+				list.add(userProfile);
+			}
+			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+		
+	}
+	
+	public List<UserProfile> getActiveUsers() {
+		// TODO Auto-generated method stub
 		String sql = "SELECT * FROM USERS WHERE isdeleted=0";
 		List<UserProfile> list = null;
 		try {

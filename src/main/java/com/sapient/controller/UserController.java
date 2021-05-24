@@ -2,14 +2,7 @@ package com.sapient.controller;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.sapient.dao.UserDAO;
 import com.sapient.entity.User;
@@ -31,27 +24,35 @@ public class UserController {
 
 	private IUserDAO dao = new UserDAO(); 
 	
-	@GetMapping("/users")
+	@CrossOrigin(origins = "*")
+	@GetMapping("/users/all")
 	public List<UserProfile> getAllUsers() {
 		return dao.getAllUsers(); 
 	}
 	
+	@CrossOrigin(origins = "*")
+	@GetMapping("/users")
+	public List<UserProfile> getActiveUsers() {
+		return dao.getActiveUsers(); 
+	}
+	
+	@CrossOrigin(origins = "*")
 	@GetMapping("/users/{userId}")
 	public UserProfile getUserById(@PathVariable String userId) {
 		return dao.getUser(userId); 
 	}
-	
+	@CrossOrigin(origins = "*")
 	@PostMapping("/login")
 	public boolean login(@RequestBody Loginparams loginparams ) {
 		return dao.loginUser(loginparams); 
 	}
-	
+	@CrossOrigin(origins = "*")
 	@PostMapping("/register")
 	public boolean register(@RequestBody User user) {
 		return dao.registerUser(user); 
 	}
 	
-	
+	@CrossOrigin(origins = "*")
 	@PutMapping("/users")
 	public boolean deleteUser(@RequestBody  DeleteUserParams params) {
 		return dao.deleteUser(params); 
