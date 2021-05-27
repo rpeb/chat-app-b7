@@ -28,12 +28,13 @@ public class MessageRequestDAO implements IMessageRequestDAO {
 		return false;
 	}
 
-	public MessageRequest getMessage(int requestId) {
-		String sql = "select request_id, sender_id, receiver_id, message_body, is_accepted from messagerequest where request_id = ?";
+	public MessageRequest getMessage(String senderId, String receiverId) {
+		String sql = "select request_id, sender_id, receiver_id, message_body, is_accepted from messagerequest where sender_id = ? and receiver_id = ?";
 
 		try {
 			PreparedStatement ps = GetConnection.getMySQLConn().prepareStatement(sql);
-			ps.setInt(1, requestId);
+			ps.setString(1, senderId);
+			ps.setString(2, receiverId);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				MessageRequest messageRequest = new MessageRequest();

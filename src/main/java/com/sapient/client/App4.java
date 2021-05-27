@@ -8,13 +8,18 @@ import com.sapient.entity.MessagePod4;
 
 public class App4 {
 	public static void main(String[] args) {
-		UserMessagesDao userMessages = new UserMessagesDao();
-		List<MessagePod4> list = new ArrayList<MessagePod4>();
-		list = userMessages.getMessagesForASender("U1");
-		for (MessagePod4 mp: list) {
-			System.out.println(mp.getNameOfUser());
-			System.out.println(mp.getUserReceiverId());
-			System.out.println(mp.getGroupReceiverId());
-		}
+//		UserMessagesDao userMessageObject = new UserMessagesDao();
+//		List<Message> res = userMessageObject.getMessages("U1", "U2");
+		GroupMessagesDao groupMessageObject = new GroupMessagesDao();
+		List<MessagePod4> res = groupMessageObject.getMessages("U1", 1);
+		System.out.println(res);
+//		Message message = new Message();
+//		message.setSenderId("U3");
+//		message.setGroupReceiverId(1);
+//		message.setMessageBody("Reply to a message");
+//		message.setReplyToAMessage(7);
+//		System.out.println(groupMessageObject.saveNewMessage(message));
+//		System.out.println(userMessageObject.deleteSenderMessage(22));
+		
 	}
 }

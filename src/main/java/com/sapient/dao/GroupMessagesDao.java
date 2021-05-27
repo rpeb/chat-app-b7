@@ -3,51 +3,28 @@ package com.sapient.dao;
 import java.sql.*;
 import java.util.*;
 
-import com.sapient.entity.*;
+import com.sapient.entity.MessagePod4;
 import com.sapient.interfaces.IGroupMessageDao;
 import com.sapient.utils.GetConnection;
 
 public class GroupMessagesDao implements IGroupMessageDao {
 	public List<MessagePod4> getMessages(String userId, int groupReceiver) {
-		String sqlGroupSender = "SELECT * FROM messages WHERE sender_id = ? AND group_receiver_id = ? ORDER BY time_of_messaging";
 		String sqlGroupReceiver = "SELECT * FROM messages WHERE group_receiver_id = ? ORDER BY time_of_messaging";
 		try {
-			PreparedStatement psGroupSender = GetConnection.getPreparedStatement(sqlGroupSender);
 			PreparedStatement psGroupReceiver = GetConnection.getPreparedStatement(sqlGroupReceiver);
-			psGroupSender.setString(1, userId);
-			psGroupSender.setInt(2, groupReceiver);
 			psGroupReceiver.setInt(1, groupReceiver);
-			ResultSet senderMessages = psGroupSender.executeQuery();
 			ResultSet receiverMessages = psGroupReceiver.executeQuery();
 			List<MessagePod4> list = new ArrayList<MessagePod4>();
 			
-//			while (senderMessages.next()) {
-//				MessagePod4 message = new MessagePod4();
-//				message.setMessageId(senderMessages.getInt("message_id"));
-//				message.setMessageBody(senderMessages.getString("message_body"));
-//				String dateOfMessage = senderMessages.getDate("time_of_messaging").toString();
-//				String timeOfMessage = senderMessages.getTime("time_of_messaging").toString();
-//				message.setTimeOfMessaging(dateOfMessage + "T" + timeOfMessage);
-//				message.setSenderId(userId);
-//				message.setMessageId(senderMessages.getInt("message_id"));
-//				message.setDeletedSender(senderMessages.getInt("deleted_sender"));
-//				message.setDeletedReceiver(senderMessages.getInt("deleted_receiver"));
-//				message.setReplyToAMessage(senderMessages.getInt("reply_to_a_message"));
-//				list.add(message);
-//			}
 			
 			while (receiverMessages.next()) {
 				MessagePod4 message = new MessagePod4();
-				UserProfile user = new UserProfile();
-				UserDAO userdao = new UserDAO();
 				message.setMessageId(receiverMessages.getInt("message_id"));
 				message.setMessageBody(receiverMessages.getString("message_body"));
 				String dateOfMessage = receiverMessages.getDate("time_of_messaging").toString();
 				String timeOfMessage = receiverMessages.getTime("time_of_messaging").toString();
 				message.setTimeOfMessaging(dateOfMessage + "T" + timeOfMessage);
 				message.setSenderId(receiverMessages.getString("sender_id"));
-				user = userdao.getUser(receiverMessages.getString("sender_id"));
-				message.setNameOfUser(user.getName());
 				message.setMessageId(receiverMessages.getInt("message_id"));
 				message.setDeletedSender(receiverMessages.getInt("deleted_sender"));
 				message.setDeletedReceiver(receiverMessages.getInt("deleted_receiver"));
@@ -109,4 +86,5 @@ public class GroupMessagesDao implements IGroupMessageDao {
 			return false;
 		}
 	}
+	
 }

@@ -23,9 +23,9 @@ public class UserMessagesDaoTest {
 		
 		// when
 		List<MessagePod4> expected = new ArrayList<MessagePod4>();
-		message = new MessagePod4(1,"U1","U2",0,"2021-05-08T21:16:25","Hi, how are you?",0,0,0,"U1");
+		message = new MessagePod4(1,"U1","U2",0,"2021-05-08T21:16:25","Hi, how are you?",0,0,0);
 		expected.add(message);
-		message = new MessagePod4(11,"U2","U1",0,"2021-05-08T21:16:38","I am fine user one!",0,0,1,"U1");
+		message = new MessagePod4(11,"U2","U1",0,"2021-05-08T21:16:38","I am fine user one!",0,0,1);
 		expected.add(message);
 //		System.out.println(expected);
 		

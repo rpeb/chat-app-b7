@@ -11,20 +11,9 @@ public class MessagePod4 {
 	private int deletedSender;
 	private int deletedReceiver;
 	private int replyToAMessage;
-	private String nameOfUser;
 	
-	public String getNameOfUser() {
-		return nameOfUser;
-	}
-	public void setNameOfUser(String nameOfUser) {
-		this.nameOfUser = nameOfUser;
-	}
-	public int getDeletedSender() {
-		return deletedSender;
-	}
-	public MessagePod4(int messageId, String senderId, String userReceiverId, int groupReceiverId,
-			String timeOfMessaging, String messageBody, int deletedSender, int deletedReceiver, int replyToAMessage,
-			String nameOfUser) {
+	public MessagePod4(int messageId, String senderId, String userReceiverId, int groupReceiverId, String timeOfMessaging,
+			String messageBody, int deletedSender, int deletedReceiver, int replyToAMessage) {
 		super();
 		this.messageId = messageId;
 		this.senderId = senderId;
@@ -35,12 +24,7 @@ public class MessagePod4 {
 		this.deletedSender = deletedSender;
 		this.deletedReceiver = deletedReceiver;
 		this.replyToAMessage = replyToAMessage;
-		this.nameOfUser = nameOfUser;
 	}
-	public int getDeletedReceiver() {
-		return deletedReceiver;
-	}
-
 	public MessagePod4() {
 		super();
 	}

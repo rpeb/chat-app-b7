@@ -16,13 +16,11 @@ import com.sapient.entity.MessagePod4;
 public class GroupMessageController {
 	GroupMessagesDao groupMessages = new GroupMessagesDao();
 	
-	@CrossOrigin(origins = "*")
 	@GetMapping("/{senderId}/{receiverId}")
 	public List<MessagePod4> getMessages(@PathVariable String senderId, @PathVariable int receiverId) {
 		return groupMessages.getMessages(senderId, receiverId);
 	}
 	
-	@CrossOrigin(origins = "*")
 	@PostMapping("/{senderId}/{receiverId}")
 	public boolean saveMessage(@PathVariable String senderId, @PathVariable int receiverId, @RequestBody String messageBody) {
 		MessagePod4 message = new MessagePod4();
@@ -32,7 +30,6 @@ public class GroupMessageController {
 		return groupMessages.saveNewMessage(message);
 	}
 	
-	@CrossOrigin(origins = "*")
 	@PostMapping("/{senderId}/{receiverId}/{messageId}")
 	public boolean replyToAMessage(@PathVariable int messageId, @PathVariable String senderId, @PathVariable int receiverId, @RequestBody String messageBody) {
 		MessagePod4 message = new MessagePod4();

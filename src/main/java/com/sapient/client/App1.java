@@ -52,7 +52,7 @@
 //		}
 //
 //		System.out.println(dao.saveMessage(m) ? "Inserted " : "Not Inserted");
-//		System.out.println(dao.getMessage(02));
+//		System.out.println(dao.getMessage("10004", "10003"));
 //		System.out.println(dao.getAllMessages());
 //		System.out.println(dao.updateRequest(1, 1) ? "Updated" : "Not updated");
 //
