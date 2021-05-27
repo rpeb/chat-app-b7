@@ -2,6 +2,7 @@ package com.sapient.controller;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import com.sapient.interfaces.IGroupDAO;
 // http://localhost:8080/api/group - GET 
 //http://localhost:8080/api/group/1 - GET
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class GroupController {

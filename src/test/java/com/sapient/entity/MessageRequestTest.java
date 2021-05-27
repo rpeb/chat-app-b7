@@ -25,9 +25,9 @@ class MessageRequestTest {
 	@Test
 	@DisplayName("Should Return Request Id Correctly.")
 	public void should_ReturnRequestId_When_RequestIdRequested() {
-		messageRequest.setRequestId("10");
+		messageRequest.setRequestId(10);
 		int expected = 10;
-		String actual = messageRequest.getRequestId();
+		int actual = messageRequest.getRequestId();
 		
 		assertEquals(expected, actual);
 	}

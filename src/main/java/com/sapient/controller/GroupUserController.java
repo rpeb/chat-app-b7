@@ -2,6 +2,7 @@ package com.sapient.controller;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,7 @@ import com.sapient.entity.Group;
 import com.sapient.entity.GroupUserRelation;
 import com.sapient.interfaces.IGroupDAO;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class GroupUserController {

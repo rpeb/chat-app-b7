@@ -1,7 +1,7 @@
 package com.sapient.entity;
 
 public class MessageRequest {
-	private String requestId;
+	private int requestId;
 	private String senderId;
 	private String receiverId;
 	private String messageBody;
@@ -11,7 +11,7 @@ public class MessageRequest {
 
 	}
 
-	public MessageRequest(String requestId, String senderId, String receiverId, String messageBody, int isAccepted) {
+	public MessageRequest(int requestId, String senderId, String receiverId, String messageBody, int isAccepted) {
 		this.requestId = requestId;
 		this.senderId = senderId;
 		this.receiverId = receiverId;
@@ -19,11 +19,11 @@ public class MessageRequest {
 		this.isAccepted = isAccepted;
 	}
 
-	public String getRequestId() {
+	public int getRequestId() {
 		return requestId;
 	}
 
-	public void setRequestId(String requestId) {
+	public void setRequestId(int requestId) {
 		this.requestId = requestId;
 	}
 

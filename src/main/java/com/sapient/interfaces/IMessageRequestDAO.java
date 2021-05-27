@@ -16,4 +16,7 @@ public interface IMessageRequestDAO {
 	
 	//update a request
 	public boolean updateRequest(int request_id, int is_accepted);
+	
+	//
+	public List<MessageRequest> getMessage( String receiverId);
 }

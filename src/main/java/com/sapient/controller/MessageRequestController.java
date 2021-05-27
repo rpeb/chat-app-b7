@@ -37,6 +37,11 @@ public class MessageRequestController {
 		return dao.getMessage(senderId, receiverId);
 	}
 
+	@GetMapping("/message-request/{receiverId}")
+	public List<MessageRequest> getMessage( @PathVariable String receiverId) {
+		return dao.getMessage(receiverId);
+	}
+	
 	@PostMapping("/message-request")
 	public String insertMessage(@RequestBody MessageRequest messageRequest) {
 		return dao.saveMessage(messageRequest) ? "Inserted" : "Not Inserted";

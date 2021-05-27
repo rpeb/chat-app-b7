@@ -12,6 +12,7 @@ import com.sapient.entity.MessagePod4;
 //POST /api/messages/U3/U4/
 //PATCH /api/messages/83/U4
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/messages")
 public class UserMessageController {

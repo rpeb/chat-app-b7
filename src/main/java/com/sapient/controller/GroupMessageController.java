@@ -11,6 +11,7 @@ import com.sapient.entity.MessagePod4;
 //POST /api/messages/group/U1/1
 //POST /api/messages/group/U1/1/7
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/messages/group")
 public class GroupMessageController {
