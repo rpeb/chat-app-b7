@@ -23,7 +23,8 @@ public class UserMessagesDao implements IUserMessageDao {
 			ResultSet senderMessages = psUserSender.executeQuery();
 			ResultSet receiverMessages = psUserReceiver.executeQuery();
 			List<MessagePod4> list = new ArrayList<MessagePod4>();
-			
+			UserProfile user = new UserProfile();
+			UserDAO userdao = new UserDAO();
 			while (senderMessages.next()) {
 				MessagePod4 message = new MessagePod4();
 				message.setMessageBody(senderMessages.getString("message_body"));
@@ -31,6 +32,8 @@ public class UserMessagesDao implements IUserMessageDao {
 				String timeOfMessage = senderMessages.getTime("time_of_messaging").toString();
 				message.setTimeOfMessaging(dateOfMessage + "T" + timeOfMessage);
 				message.setSenderId(userId);
+				user = userdao.getUser(userId);
+				message.setNameOfUser(user.getName());
 				message.setUserReceiverId(userReceiver);
 				message.setMessageId(senderMessages.getInt("message_id"));
 				message.setDeletedSender(senderMessages.getInt("deleted_sender"));
@@ -46,6 +49,8 @@ public class UserMessagesDao implements IUserMessageDao {
 				String timeOfMessage = receiverMessages.getTime("time_of_messaging").toString();
 				message.setTimeOfMessaging(dateOfMessage + "T" + timeOfMessage);
 				message.setSenderId(userReceiver);
+				user = userdao.getUser(userReceiver);
+				message.setNameOfUser(user.getName());
 				message.setUserReceiverId(userId);
 				message.setMessageId(receiverMessages.getInt("message_id"));
 				message.setDeletedSender(receiverMessages.getInt("deleted_sender"));
