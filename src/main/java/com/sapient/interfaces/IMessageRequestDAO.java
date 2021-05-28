@@ -9,7 +9,7 @@ public interface IMessageRequestDAO {
 	public boolean saveMessage(MessageRequest messageRequest );
 	
 	//getMessage
-	public MessageRequest getMessage(int request_id);
+	public MessageRequest getMessage(String senderId, String receiverId);
 	
 	//get all messages
 	public List<MessageRequest> getAllMessages();

@@ -18,11 +18,18 @@ public class MessageRequestController {
 	public List<MessageRequest> getAllMessage() {
 		return dao.getAllMessages();
 	}
+//	@CrossOrigin(origins = "*")
+//	@GetMapping("/message-request/{requestId}")
+//	public MessageRequest getMessage(@PathVariable int requestId) {
+//		return dao.getMessage(requestId);
+//	}
+	
 	@CrossOrigin(origins = "*")
-	@GetMapping("/message-request/{requestId}")
-	public MessageRequest getMessage(@PathVariable int requestId) {
-		return dao.getMessage(requestId);
+	@GetMapping("/message-request/{senderId}/{receiverId}")
+	public MessageRequest getMessage(@PathVariable String senderId, @PathVariable String receiverId) {
+		return dao.getMessage(senderId, receiverId);
 	}
+	
 	@CrossOrigin(origins = "*")
 	@PostMapping("/message-request")
 	public String insertMessage(@RequestBody MessageRequest messageRequest) {
